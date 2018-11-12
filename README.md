@@ -10,6 +10,44 @@ Code to accompany the "Namespaces in Go" series of articles.
 * [Part 6: Namespaces in Go - Network](https://medium.com/@teddyking/namespaces-in-go-network-fdcf63e76100)
 * [Part 7: Namespaces in Go - UTS](https://medium.com/@teddyking/namespaces-in-go-uts-d47aebcdf00e)
 
+## Environment Preparation
+
+For mac users, the simplest way to setup an environment is using Vagrant. 
+
+	vagrant init ubuntu/xenial64
+	vagrant up
+	vagrant ssh
+
+Install go
+
+	apt install golang-go	
+
+Setup GOPATH
+
+	export GOPATH=$(pwd)
+
+Get extra packages
+
+	go get github.com/docker/docker/pkg/reexec
+
+Build now
+
+	go build	
+
+Install netsetgo
+
+	wget "https://github.com/teddyking/netsetgo/releases/download/0.0.1/netsetgo"
+	sudo mv netsetgo /usr/local/bin/
+	sudo chown root:root /usr/local/bin/netsetgo
+	sudo chmod 4755 /usr/local/bin/netsetgo
+
+Get a root fs
+
+	wget "https://raw.githubusercontent.com/teddyking/ns-process/4.0/assets/busybox.tar"
+	mkdir -p /tmp/ns-process/rootfs
+	tar -C /tmp/ns-process/rootfs -xf busybox.tar
+
+
 ## Usage
 
 Each of the code extracts in the articles reference a git tag, which can be
